@@ -1,0 +1,167 @@
+// css navigator (Menu)
+.menu {
+  --dMenu: block;
+  --hUl: 30px;
+  padding-top: 32px;
+  display: var(--dMenu);
+  --clHeader: $black-cl;
+  &.--clWhite {
+    --clHeader: #fff;
+  }
+  &.detail {
+    padding-top: 50px;
+    position: relative;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #bfbfbf;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+    li {
+      a {
+        @include midflex;
+      }
+    }
+  }
+  ul {
+    display: flex;
+    height: var(--hUl);
+    padding-left: 25px;
+    padding-right: 25px;
+    &.detail {
+      --hUl: 70px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li {
+      padding: 0px 15px;
+      height: 100%;
+      @include midflex;
+      a {
+        text-decoration: none;
+        height: 100%;
+        @include text(11px, ar, 30px, 0, var(--clHeader), uppercase);
+        i {
+          padding-left: 20px;
+          img {
+            &.rotale {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+    .icon {
+      flex-grow: 1;
+      text-align: center;
+      img {
+        width: 100px;
+        margin-top: -30px;
+      }
+    }
+  }
+  @include xs {
+    --dMenu: none;
+  }
+}
+.menu-fixed {
+  --hMenuFixed: 70px;
+  --midLogo: -1.2%;
+  height: var(--hMenuFixed);
+  width: 100%;
+  background: $blue-bg-cl;
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 20;
+  @include transition($t);
+  @include transform(translateY(-200%));
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+    @include transition($t);
+    @include transform(translateY(-100%));
+  }
+  ul {
+    width: 100%;
+    height: 100%;
+    margin-left: var(--midLogo);
+    @include midflex;
+    li {
+      height: 100%;
+      cursor: pointer;
+      a {
+        height: 100%;
+        padding: 0px 30px;
+        text-decoration: none;
+        @include text(11px, arial, 40px, 0, $t-white-cl, uppercase);
+        font-weight: bold;
+        @include midflex;
+      }
+    }
+
+    .--pd60 {
+      padding: 0 60px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .font {
+      display: none;
+    }
+  }
+  @include md {
+    &.--pdMN {
+      @include transform(translateY(100%));
+    }
+    &.--detail {
+      @include transform(translateY(-172%));
+    }
+  }
+  @include sm {
+    --midLogo: -2.6%;
+    display: none;
+    .--pd60 {
+      padding: 0px 30px;
+    }
+  }
+  @include xs {
+    display: block;
+    pointer-events: auto;
+    opacity: 1;
+    @include transition($t);
+    @include transform(translateY(0%));
+    ul {
+      justify-content: space-between;
+      margin: 0;
+      padding: 0 40px;
+      li {
+        display: none;
+      }
+      .font {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 115px;
+        text-decoration: none;
+        @include text(18px, arial, 43px, 0.5px, $t-white-cl, uppercase);
+      }
+      .--pd60 {
+        padding: 0;
+      }
+    }
+  }
+  &.--detail {
+    &.active {
+      pointer-events: auto;
+      opacity: 1;
+      @include transition($t);
+      @include transform(translateY(-172%));
+    }
+  }
+}

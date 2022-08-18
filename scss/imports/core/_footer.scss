@@ -1,0 +1,98 @@
+// css footer
+footer {
+  --hLogoFooter: 90px;
+  --hLineLogo: 42%;
+  --mtContainer: 170px;
+  --hContact: 215px;
+  background: #132539;
+  position: absolute;
+  margin-top: -400px;
+  padding-top: 320px;
+  width: 100%;
+  &.fixFT {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+  .container {
+    margin-top: var(--mtContainer);
+    &.fixMt {
+      --mtContainer: 70px !important;
+    }
+    .contact {
+      height: var(--hContact);
+      margin-bottom: 205px;
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      font-family: arial;
+      line-height: 26px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      &::before,
+      &::after {
+        content: "";
+        width: var(--hLineLogo);
+        height: 1px;
+        background-color: #665d49;
+        top: 50px;
+        position: absolute;
+      }
+      &::before {
+        left: 0;
+      }
+      &:after {
+        right: 0;
+      }
+      img {
+        width: var(--hLogoFooter);
+        margin-bottom: 55px;
+      }
+      .backtotop {
+        transform: rotate(90deg);
+        width: 240px;
+        position: absolute;
+        right: -120px;
+        text-align: right;
+        line-height: 26px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        &::before {
+          content: "";
+          height: 1px;
+          width: 135px;
+          background-color: #665d49;
+          position: absolute;
+          left: -10px;
+          top: 50%;
+          @include transition($t);
+        }
+        &:hover {
+          color: #c0892c;
+          &::before {
+            left: -25px;
+            @include transition($t);
+          }
+        }
+      }
+    }
+  }
+  @include xs {
+    --hLineLogo: 165px;
+    --mtContainer: 250px;
+    --hContact: 820px;
+    --hLineLogo: 30%;
+    .contact {
+      font-size: 18px !important;
+      line-height: 50px !important;
+      .backtotop {
+        width: 460px !important;
+        right: -220px !important;
+        bottom: 30px !important;
+        &::before {
+          width: 270px !important;
+        }
+      }
+    }
+  }
+}

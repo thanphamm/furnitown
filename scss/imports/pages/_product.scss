@@ -1,0 +1,44 @@
+main {
+  &.productpage {
+    --mbSlider: 90px;
+    padding-bottom: 100px;
+    background-color: #f3f3f3;
+    &.--bgwhite {
+      background-color: #fff;
+    }
+    .slider {
+      --hSlider: 450px;
+      .slider__item-text {
+        align-items: flex-end;
+        position: absolute;
+        z-index: 101;
+        .des {
+          font-size: 24px;
+          line-height: 50px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          text-align: right;
+          width: 525px;
+          font-family: "er";
+          font-weight: unset;
+        }
+      }
+      .overplay {
+        position: absolute;
+        z-index: 100;
+        background: #00000096;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+      }
+      @include sm {
+        --wTextF: 700px;
+      }
+      @include xs {
+        --dTextF: block !important;
+        --wTextF: 525px;
+      }
+    }
+  }
+}

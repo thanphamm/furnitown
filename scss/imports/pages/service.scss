@@ -1,0 +1,73 @@
+main {
+  &.servicepage {
+    padding-top: 100px;
+    padding-bottom: 35px;
+    .service {
+      .container {
+        padding: 0px 70px;
+        display: flex;
+        flex-direction: column;
+      }
+      &__text {
+        @include midflex;
+        margin-bottom: 30px;
+        .title {
+          @include text(32px, er, 50px, 1px, #000, uppercase);
+          text-align: center;
+        }
+      }
+      &__img {
+        width: 100%;
+        margin-bottom: 45px;
+        img {
+          @include midimgg;
+        }
+      }
+      &__wrap {
+        display: flex;
+        position: relative;
+        padding-bottom: 81px;
+        padding-left: 30px;
+        padding-right: 30px;
+        &::after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          content: "";
+          width: 100%;
+          height: 1px;
+          background-color: #585958;
+        }
+        &-text {
+          display: flex;
+          flex-direction: column;
+        }
+        &-item {
+          display: flex;
+          justify-content: space-evenly;
+          flex-grow: 1;
+          padding-top: 85px;
+        }
+      }
+    }
+    @include sm {
+      .service {
+        .container {
+          padding: 0px 15px !important;
+        }
+        &__wrap {
+          flex-direction: column;
+        }
+      }
+    }
+    @include xs {
+      .service {
+        &__wrap {
+          &-item {
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+  }
+}

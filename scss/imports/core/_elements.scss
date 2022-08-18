@@ -1,0 +1,586 @@
+// css button, title, icon, elements...
+img {
+  max-width: 100%;
+}
+.btnhambuger {
+  --wHambuger: 40px;
+  --Hambuger-cl: #ffffff;
+  max-width: var(--wHambuger);
+  height: 100%;
+  @include midflex;
+  cursor: pointer;
+  z-index: 10;
+  span {
+    width: var(--wHambuger);
+    height: 2px;
+    background: var(--Hambuger-cl);
+    display: block;
+    @include transition($t);
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: var(--wHambuger);
+      height: 2px;
+      background: var(--Hambuger-cl);
+    }
+    &::before {
+      @include transform(translateY(-10px));
+    }
+    &::after {
+      @include transform(translateY(10px));
+    }
+  }
+  &.open {
+    span {
+      @include transform(translateX(-50px));
+      background: transparent;
+      box-shadow: none;
+      &::before {
+        @include transform(rotate(45deg) translate(35px, -35px));
+      }
+      &::after {
+        @include transform(rotate(-45deg) translate(35px, 35px));
+      }
+    }
+  }
+}
+
+.--boximg {
+  @include clflex;
+  width: 48.5%;
+  justify-content: space-between;
+  &.--w100 {
+    width: 100%;
+  }
+  .text {
+    width: 100%;
+    display: flex;
+    &.--start {
+      justify-content: flex-start;
+    }
+    &.--end {
+      justify-content: flex-end;
+      position: relative;
+    }
+    .des {
+      @include text(12px, arial, 40px, 0px, $t-black-cl, none);
+      span {
+        font-weight: bold;
+      }
+      &.--ei {
+        position: relative;
+        z-index: 3;
+        top: 0;
+        text-align: right;
+        @include text(18px, ei, 40px, 0, $t-white-cl, none);
+        span {
+          color: #caa348;
+        }
+      }
+      &.--w400 {
+        max-width: 400px;
+      }
+      &.--w430 {
+        max-width: 430px;
+      }
+    }
+    .pen {
+      position: absolute;
+      bottom: -40px;
+      right: -45px;
+    }
+  }
+  .item {
+    width: 100%;
+    height: 100%;
+    @include clflex;
+    justify-content: space-between;
+    .img-wrap {
+      display: flex;
+      flex-grow: 1;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      img {
+        @include midimgg;
+        @include transition(0.5s);
+        @include transform(scale(1));
+      }
+      &:hover {
+        img {
+          @include transition(0.5s);
+          @include transform(scale(1.1));
+        }
+        .overlay {
+          opacity: 1;
+          @include transition($t);
+          @include transform(scale(1));
+        }
+      }
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        @include midflex;
+        flex-direction: column;
+        transform: scale(0.8);
+        background: #144d66bd;
+        text-decoration: none;
+        color: #fff;
+        opacity: 0;
+        @include transition($t);
+        @include transform(scale(0.8));
+        img {
+          transform: none;
+          width: 23px;
+          height: 21px;
+          object-fit: unset !important;
+        }
+        p {
+          font-size: 12px;
+          font-family: arial;
+          line-height: 40px;
+          letter-spacing: 0px;
+          color: #fff;
+          text-transform: none;
+        }
+        &.color {
+          background-color: #806020bd;
+        }
+      }
+    }
+    .title {
+      margin-bottom: 20px;
+      @include text(12px, mpb, 40px, 0, $t-black-cl, uppercase);
+    }
+    &.--h400 {
+      max-height: 400px;
+    }
+    &.--h309 {
+      max-height: 309px;
+    }
+  }
+  @include sm {
+    .pen {
+      right: -39px !important;
+    }
+  }
+  @include xs {
+    .text {
+      .pen {
+        right: 50% !important;
+        transform: translateX(50%);
+        bottom: -170px !important;
+
+        img {
+          width: 260px;
+          max-width: none;
+        }
+      }
+    }
+    .--mbsize {
+      height: 690px;
+      margin-bottom: 70px;
+    }
+    .--start {
+      display: none;
+    }
+    .--h309 {
+      max-height: 375px !important;
+      margin-bottom: 40px;
+    }
+    .--h400 {
+      max-height: 460px !important;
+      margin-bottom: 20px;
+    }
+    .--w430 {
+      max-width: 100% !important;
+    }
+    .--ei {
+      @include text(30px!important, ei, 46px!important, 0, $t-white-cl, none);
+      text-align: center !important;
+    }
+    .title {
+      margin-bottom: 25px !important;
+      @include text(
+        22px!important,
+        mpb,
+        45px!important,
+        0,
+        $t-black-cl,
+        uppercase
+      );
+    }
+    .item {
+      &.--mbsize {
+        height: 690px;
+        margin-bottom: 70px;
+      }
+    }
+    &.--grow {
+      flex-grow: 1;
+    }
+  }
+}
+
+.--btninfo {
+  text-align: center;
+  border: 1px solid black;
+  @include midflex;
+  @include mid();
+  border-radius: 5px;
+  margin-top: -40px;
+  cursor: pointer;
+  pointer-events: auto;
+  .btn {
+    background: rgb(0, 0, 0);
+
+    text-decoration: none;
+    @include text(11px, mpb, 20px, 0, rgb(255, 255, 255), uppercase);
+    padding: 10px 40px;
+    span {
+      position: absolute;
+      display: block;
+      height: 0;
+      width: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #000;
+      transition: all 0.5s;
+      z-index: -1;
+    }
+  }
+}
+.--textF {
+  width: var(--wTextF);
+  flex-direction: column;
+  align-items: center;
+  margin-top: -35px;
+  @include mid;
+  display: var(--dTextF);
+  .title {
+    @include text(80px, er, 20px, 4px, $t-white-cl, uppercase);
+    padding-bottom: 76px;
+    position: relative;
+    &:after {
+      content: "";
+      width: 53vw;
+      height: 1px;
+      background: #fff;
+      z-index: 10;
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .des {
+    @include text(12px, arial, 26px, -0.25px, $t-white-cl, uppercase);
+    font-weight: bold;
+    margin-top: 22px;
+  }
+  @include sm {
+    --wTextF: 525px;
+  }
+  @include xs {
+    --wTextF: 325px;
+  }
+}
+.btn-more {
+  font-family: arial;
+  font-size: 12px;
+  line-height: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  @include transition($t);
+  span {
+    @include transition($t);
+  }
+  img {
+    width: 30px !important;
+    padding-right: 10px;
+    @include transition($t);
+  }
+  &:hover {
+    span {
+      @include transform(translateX(-50%));
+      @include transition($t);
+    }
+    img {
+      @include transform(translateX(200%) !important);
+      @include transition($t);
+    }
+  }
+}
+.allproduct {
+  --wTextT: 527px;
+  --elip: 70px;
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 30px;
+    &.--pd {
+      padding: 0px 85px;
+    }
+    &:after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: #acacac;
+      bottom: 0;
+      left: 0;
+    }
+    &.--allproduct {
+      &::after {
+        display: none;
+      }
+    }
+    &-text {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      &.--mid {
+        justify-content: center;
+        align-items: center;
+      }
+      .text {
+        display: flex;
+        width: var(--wTextT);
+        justify-content: center;
+        align-items: center;
+        .number {
+          font-family: "e";
+          color: #c48b2c;
+          font-size: 90px;
+          line-height: 135px;
+          letter-spacing: -0.25px;
+          margin-right: 10px;
+        }
+        .title {
+          display: flex;
+          flex-direction: column;
+          font-family: "e";
+          font-size: 18px;
+          line-height: 40px;
+          text-transform: uppercase;
+          span {
+            font-family: arial;
+            font-size: 12px;
+            line-height: 20px;
+            text-transform: none;
+            @include overtext(2);
+          }
+        }
+      }
+      .btn-more {
+        margin-bottom: 20px;
+      }
+    }
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      &.--column {
+        flex-direction: column;
+      }
+      .all {
+        display: flex;
+        justify-content: space-between;
+      }
+      &::before,
+      &::after {
+        content: "";
+        width: 1px;
+        height: 92%;
+        background-color: #acacac;
+        top: 0;
+        position: absolute;
+      }
+      &.--full {
+        &::before,
+        &::after {
+          height: 100%;
+        }
+      }
+      &::before {
+        left: calc(98% / 3);
+      }
+      &::after {
+        right: calc(98% / 3);
+      }
+      .item {
+        width: calc(94% / 3);
+        .img-w {
+          cursor: pointer;
+          overflow: hidden;
+          img {
+            @include midimgg;
+            @include transition($t);
+            @include transform(scale(1));
+          }
+          &:hover {
+            img {
+              @include transition($t);
+              @include transform(scale(1.2));
+            }
+          }
+        }
+        .text-w {
+          display: flex;
+          flex-direction: column;
+          font-family: airal;
+          font-size: 18px;
+          line-height: 40px;
+          letter-spacing: -0.25px;
+          margin: 20px 0px;
+          a {
+            text-decoration: none;
+            color: #000;
+          }
+          span {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+    .btn-next {
+      width: var(--elip);
+      height: var(--elip);
+      border: 1px solid black;
+      border-radius: 50%;
+      background: #36393c;
+      position: absolute;
+      bottom: 40px;
+      right: 0;
+      cursor: pointer;
+      img {
+        width: 17px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        fill: #fff;
+      }
+    }
+    &-more {
+      width: 100%;
+      @include text(11px, arial, 40px, 0, #909090, uppercase);
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 100px;
+      @include midflex;
+      flex-direction: column;
+      img {
+        width: 8px;
+        max-width: none;
+      }
+    }
+  }
+  @include sm {
+    --elip: 60px;
+    .--pd {
+      padding: 0px 30px;
+    }
+  }
+  @include xs {
+    --wTextT: 400px;
+    --elip: 50px;
+    &__wrap {
+      &-item {
+        flex-direction: column;
+        &::before,
+        &::after {
+          display: none;
+        }
+        .item {
+          width: 100%;
+        }
+        .all {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+.overplay-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  z-index: 9;
+  @include transition($t);
+  &.active {
+    display: block;
+    pointer-events: auto;
+    @include transition($t);
+  }
+}
+.textservice {
+  .title {
+    @include text(26px, er, 50px, 1px, #000, uppercase);
+    &.--mrb {
+      margin-bottom: 30px;
+    }
+  }
+  .des {
+    @include text(12px, arial, 26px, 1px, #000, none);
+    &.--w640 {
+      max-width: 640px;
+      text-align: center;
+    }
+    &.--mrb {
+      margin-bottom: 45px;
+    }
+  }
+  &.--mid {
+    margin-top: 80px;
+    margin-bottom: 50px !important;
+    flex-direction: column;
+  }
+  &.--w400 {
+    max-width: 400px;
+  }
+}
+.btnservice {
+  padding: 10px 45px;
+  background-color: #fafafa;
+  height: 40px;
+  border: 1px solid black;
+  text-decoration: none;
+  @include text(11px, arial, 20px, 0px, #000, uppercase);
+  @include transition($t);
+  &:hover {
+    color: #fff;
+    background-color: #000;
+    @include transition($t);
+  }
+  &.active {
+    color: #fff;
+    background-color: #000;
+  }
+  @include xs {
+    padding: 10px 20px;
+  }
+}
