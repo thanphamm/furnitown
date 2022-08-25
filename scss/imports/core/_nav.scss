@@ -155,6 +155,9 @@
         padding: 0;
       }
     }
+    &.--detail {
+      @include transform(translateY(100%));
+    }
   }
   &.--detail {
     &.active {
