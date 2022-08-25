@@ -59,6 +59,17 @@ main {
             @include text(11px, mpb, 20px, 0, $t-black-cl, uppercase);
           }
         }
+        .line {
+          animation: updown 1.5s infinite;
+          @keyframes updown {
+            0% {
+              transform: translateY(-20%);
+            }
+            100% {
+              transform: translateY(0%);
+            }
+          }
+        }
       }
     }
     @include sm {
