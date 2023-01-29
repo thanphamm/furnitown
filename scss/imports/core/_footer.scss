@@ -48,6 +48,9 @@ footer {
         width: var(--hLogoFooter);
         margin-bottom: 55px;
       }
+      &__info{
+        overflow: hidden;
+      }
       .backtotop {
         transform: rotate(90deg);
         width: 240px;

@@ -38,6 +38,9 @@ main {
       @include xs {
         --dTextF: block !important;
         --wTextF: 525px;
+        .des {
+          width: auto!important;
+        }
       }
     }
   }
