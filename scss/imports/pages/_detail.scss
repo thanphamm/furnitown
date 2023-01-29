@@ -72,6 +72,28 @@ main {
           }
         }
       }
+      @include xs{
+        .container{
+          flex-direction: column;
+          &::after {
+            display: none;
+          }
+        }
+        &__img,&__text{
+          width: 90%!important;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        &__text{
+          margin-top: 20px;
+          .title{
+            margin-bottom: 20px;
+          }
+          .wrap{
+            margin-bottom: 30px;
+          }
+        }
+      }
     }
   }
 }

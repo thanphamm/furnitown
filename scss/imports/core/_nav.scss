@@ -116,7 +116,7 @@
   }
   @include md {
     &.--pdMN {
-      @include transform(translateY(100%));
+      @include transform(translateY(-100%));
     }
     &.--detail {
       @include transform(translateY(-172%));

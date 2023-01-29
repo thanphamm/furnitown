@@ -189,6 +189,9 @@ main {
     }
     @include xs {
       display: block;
+      .container{
+        overflow: hidden;
+      }
     }
   }
 }
